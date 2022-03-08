@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form method="post" id="join_frm" action="/">
+        <ul class="join_frm">
+            <li>
+                <span class="join_label">아이디</span>
+                <span class="join_input">
+                    <input type="text" name="userid" id="userid">
+                </span>
+            </li>
+            <li>
+                <span class="join_label">패스워드</span>
+                <span class="join_input">
+                    <input type="password" name="userpw" id="userpw">
+                </span>
+            </li>
+            <li>
+                <span class="join_label">패스워드확인</span>
+                <span class="join_input">
+                    <input type="password" name="userpw2" id="userpw2">
+                </span>
+            </li>
+            <li>
+                <span class="join_label">이름</span>
+                <span class="join_input">
+                    <input type="text" name="name" id="name">
+                </span>
+            </li>
+            <li>
+                <span class="join_label">닉네임</span>
+                <span class="join_input">
+                    <input type="text" name="nickname" id="nickname">
+                </span>
+            </li>
+            <li>
+                <span class="join_label">생년월일</span>
+                <span class="join_input">
+                    <input type="text" name="birth" id="birth">
+                </span>
+            </li>
+            <li>
+                <span class="join_label">성별</span>
+                <span class="join_input">
+                    <input type="radio" name="gender" value="남자"  id="gender1"> <label for="gender1">남자</label>
+                    <input type="radio" name="gender" value="여자"  id="gender2"> <label for="gender2">여자</label>
+                </span>
+            </li>
+            <li>
+                <span class="join_label">전화번호</span>
+                <span class="join_input">
+                    <input type="text" name="phone" id="phone">
+                </span>
+            </li>
+            <li>
+                <span class="join_label">핸드폰 번호</span>
+                <span class="join_input">
+                    <input type="text" name="mobile" id="mobile">
+                </span>
+            </li>
+        </ul>
+        <input type="submit" value="회원가입">
+    </form>
+    <script type="text/javascript">
+        //1.submit 이벤트를 만들고 이벤트를 막는기능
+        const frm = document.querySelector('#join_frm')
+
+        frm.addEventListener('submit',async (e)=>{
+            e.preventDefault()
+            const data = {
+                userid:document.querySelector('#userid').value,
+                userpw:document.querySelector('#userpw').value,
+                username:document.querySelector('#name').value,
+                nickname:document.querySelector('#nickname').value,
+                birth:document.querySelector('#birth').value,
+                gender:document.querySelector('input[name="gender"]:checked').value,
+                phone:document.querySelector('#phone').value,
+                mobile:document.querySelector('#mobile').value,
+            }
+            const option = {'Content-type':'application/json'}
+            //return 값 -> promise 객체
+            // 데이터를 받는방법 2가지 : then , async/await
+            const response = await axios.post('http://localhost:4001/api/user/join',data,option)
+            console.log(response)
+        })
+    </script>
+</body>
+</html>
+
+<!-- 
+    POST -> http://localhost:4001/api/user/join
+    
+    
+    프론트 엔드 개발자
+    입력폼 제작하려면 스키마 보고 만든다.
+    
+    userid 
+    userpw 
+    name 
+    nickname 
+    birth 
+    gender 
+    phone 
+    mobile 
+
+-->
