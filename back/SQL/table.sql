@@ -2,15 +2,15 @@ CREATE DATABASE home;
 USE home;
 
 CREATE TABLE user(
-    userlevel INT NOT NULL,
-    userid VARCHAR(10) NOT NULL ,
-    userpw VARCHAR(10) NOT NULL,
-    name VARCHAR(10) NOT NULL,
-    nickname VARCHAR(10) NOT NULL,
+    userlevel INT NOT NULL DEFAULT 1,
+    userid VARCHAR(30) NOT NULL ,
+    userpw VARCHAR(30) NOT NULL,
+    name VARCHAR(30) NOT NULL,
+    nickname VARCHAR(30) NOT NULL,
     birth DATE,
-    gender CHAR(1),
-    phone VARCHAR(11),
-    mobile VARCHAR(11) NOT NULL,
+    gender CHAR(30),
+    phone VARCHAR(15),
+    mobile VARCHAR(15) NOT NULL,
     active INT NOT NULL DEfAULT 1,
     PRIMARY KEY(userid)
 );
